@@ -13,7 +13,7 @@ spark = SparkSession.builder \
 spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY")
 
 # GCS path containing all CSV files
-gcs_path = "gs://your-bucket-name/student_data/*.csv"  # All CSVs in one read
+gcs_path = "gs://modak-training-bucket1/mt24080_nabu/*.csv"  # All CSVs in one read
 
 # Subject columns
 subject_cols = ["Math", "English", "Hindi", "Science", "Economics", "History", "Geography", "Telugu", "Physics", "Chemistry"]
