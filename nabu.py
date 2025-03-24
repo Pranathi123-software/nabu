@@ -3,11 +3,15 @@ from pyspark.sql.functions import col, sum as spark_sum, avg, when, dense_rank
 from pyspark.sql.window import Window
 
 # Initialize Spark Session with GCS support
+from pyspark.sql import SparkSession
+
 spark = SparkSession.builder \
     .appName("GCS_StudentDetails_Transformation") \
+    .config("spark.jars.packages", "com.google.cloud.bigdataoss:gcs-connector:hadoop3-2.2.5") \
     .config("spark.hadoop.google.cloud.auth.service.account.enable", "true") \
     .config("spark.hadoop.google.cloud.auth.service.account.json.keyfile", "C:/Users/MT24054/Downloads/modak-nabu-7103e448ac3f (1) (1).json") \
     .getOrCreate()
+
 
 # Set legacy parser policy to avoid timestamp format issues
 spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY")
