@@ -8,9 +8,11 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder \
     .appName("GCS_StudentDetails_Transformation") \
     .config("spark.jars.packages", "com.google.cloud.bigdataoss:gcs-connector:hadoop3-2.2.5") \
+    .config("spark.hadoop.fs.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem") \
     .config("spark.hadoop.google.cloud.auth.service.account.enable", "true") \
-    .config("spark.hadoop.google.cloud.auth.service.account.json.keyfile", "C:/Users/MT24054/Downloads/modak-nabu-7103e448ac3f (1) (1).json") \
+    .config("spark.hadoop.google.cloud.auth.service.account.json.keyfile", "C:/Users/MT24054/Downloads/gcp_cred.json") \
     .getOrCreate()
+
 
 
 # Set legacy parser policy to avoid timestamp format issues
